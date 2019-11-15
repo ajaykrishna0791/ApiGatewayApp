@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: spring-cloud-apiGateway
+server:
+  address: localhost
+  port: 8090
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+    
+zuul:
+  routes:
+    emp-service: 
+      path: /emp-service/**
+    spring-cloud-eureka-client:
+      path: /spring-cloud-eureka-client/**
+    discovery:
+      path: /discoveryService/**
+      url: http://localhost:8761
+  host:
+    socket-timeout-millis: 30000 
+    
